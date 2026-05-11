@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhijith B | AI-CS Student & Basketball Player</title>
+    <style>
+      :root {
+        --bg: #060b19;
+        --surface: #0e1632;
+        --surface-soft: #162243;
+        --text: #f5f7ff;
+        --muted: #a0a8c0;
+        --accent: #6f8dff;
+        --accent-strong: #4f72ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, rgba(111, 141, 255, 0.18), transparent 30%),
+          linear-gradient(180deg, #071020 0%, #060b19 100%);
+        line-height: 1.6;
+      }
+
+      .page {
+        min-height: 100vh;
+        padding: 32px 24px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 42px;
+      }
+
+      .brand {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .brand h1 {
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+        letter-spacing: -0.03em;
+      }
+
+      .brand p {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        padding: 28px 32px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 26px;
+      }
+
+      .hero-copy h2 {
+        font-size: clamp(1.9rem, 3vw, 2.8rem);
+        margin-bottom: 18px;
+      }
+
+      .hero-copy p {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .hero-copy .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border: 1px solid rgba(111, 141, 255, 0.24);
+        border-radius: 999px;
+        background: rgba(111, 141, 255, 0.09);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .hero-image {
+        min-height: 380px;
+        background: linear-gradient(135deg, rgba(79, 114, 255, 0.22), rgba(8, 15, 35, 1));
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 28px;
+        display: grid;
+        place-items: center;
+      }
+
+      .hero-image .profile-card {
+        width: 100%;
+        max-width: 340px;
+        padding: 28px;
+        border-radius: 28px;
+        background: rgba(9, 18, 39, 0.92);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .profile-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+      }
+
+      .profile-card p {
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+
+      .profile-card .skill-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .skill-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        color: var(--text);
+        font-size: 0.96rem;
+      }
+
+      section {
+        margin-top: 44px;
+        padding: 28px 32px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+      }
+
+      section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .card h4 {
+        margin-bottom: 12px;
+      }
+
+      .card p {
+        color: var(--muted);
+      }
+
+      .highlight {
+        color: var(--accent);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .stat {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(111, 141, 255, 0.08);
+        border: 1px solid rgba(111, 141, 255, 0.16);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+
+      .stat span {
+        color: var(--muted);
+      }
+
+      .projects-list {
+        display: grid;
+        gap: 18px;
+      }
+
+      .project {
+        padding: 20px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .project h5 {
+        margin-bottom: 10px;
+      }
+
+      .project p {
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 42px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="container">
+        <header>
+          <div class="brand">
+            <h1>Abhijith B</h1>
+            <p>S5 AI-CS student | University basketball player | Full-stack coding enthusiast</p>
+          </div>
+          <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+
+        <section class="hero">
+          <div class="hero-copy">
+            <h2>Building AI-driven solutions while chasing excellence on the court.</h2>
+            <p>
+              I am an AI-CS engineering student at Muthoot Institute of Technology and Science, combining
+              machine learning, web development, and competitive sports. I play university-level basketball for the KTU team
+              and code in React, Python, C, Java, HTML, Flask, and AI/ML frameworks.
+            </p>
+            <div class="badges">
+              <span class="badge">KTU Basketball</span>
+              <span class="badge">AI & Machine Learning</span>
+              <span class="badge">React & Flask</span>
+              <span class="badge">Python • C • Java</span>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <div class="profile-card">
+              <h3>Who I am</h3>
+              <p>
+                I’m Abhijith, an undergraduate AI-CS student with a passion for building intelligent web apps and
+                solving problems with data. I bring competitive teamwork from basketball into every project.
+              </p>
+              <div class="skill-list">
+                <span class="skill-pill">React</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Flask</span>
+                <span class="skill-pill">Machine Learning</span>
+                <span class="skill-pill">Java</span>
+                <span class="skill-pill">C</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about">
+          <h3>About Me</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Academics</h4>
+              <p>
+                Currently in S5 of AI-CS at Muthoot Institute of Technology and Science. I focus on artificial intelligence,
+                algorithms, data structures, and full-stack development.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Sports</h4>
+              <p>
+                University-level basketball player representing KTU. I train hard, lead with discipline, and bring
+                teamwork and focus to both the court and software projects.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills">
+          <h3>Skills</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Programming & Development</h4>
+              <p>React, HTML, CSS, JavaScript, Flask, Python, Java, C, REST APIs, responsive UI design.</p>
+            </div>
+            <div class="card">
+              <h4>AI & ML</h4>
+              <p>Machine learning concepts, model experimentation, data processing, neural networks, problem solving.</p>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>5+</strong>
+              <span>Programming Languages</span>
+            </div>
+            <div class="stat">
+              <strong>1+</strong>
+              <span>University Basketball Team</span>
+            </div>
+            <div class="stat">
+              <strong>3+</strong>
+              <span>Full-stack and AI projects</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h3>Featured Projects</h3>
+          <div class="projects-list">
+            <div class="project">
+              <h5>AI-powered Course Recommendation</h5>
+              <p>
+                A predictive web app that suggests learning paths based on student interests and performance using
+                classification models and a Flask backend.
+              </p>
+            </div>
+            <div class="project">
+              <h5>React Dashboard for Analytics</h5>
+              <p>
+                A responsive dashboard built with React to visualize data and display real-time metrics, designed for
+                clean user experience and modern styling.
+              </p>
+            </div>
+            <div class="project">
+              <h5>Sports Performance Tracker</h5>
+              <p>
+                A personal project to record training progress, basketball drills, and performance statistics with a
+                polished interface and intuitive controls.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h3>Contact</h3>
+          <div class="card">
+            <p>
+              I’m open to collaboration on AI, machine learning, web development, and sports analytics projects. Let’s connect
+              and build something impactful.
+            </p>
+            <p class="highlight">Email: abd@example.com</p>
+          </div>
+        </section>
+
+        <footer>
+          <p>Designed for Abhijith B — AI-CS student, KTU basketball player, and coding enthusiast.</p>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
