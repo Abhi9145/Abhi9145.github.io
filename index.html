@@ -148,15 +148,30 @@
         font-size: 1.6rem;
       }
 
-      .profile-avatar {
+      .profile-avatar,
+      .profile-avatar-placeholder {
         width: 100%;
-        max-width: 220px;
+        max-width: 240px;
+        aspect-ratio: 1 / 1;
         display: block;
         margin: 0 auto 22px;
         border-radius: 28px;
         border: 2px solid rgba(111, 141, 255, 0.28);
         box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+      }
+
+      .profile-avatar {
         object-fit: cover;
+      }
+
+      .profile-avatar-placeholder {
+        display: none;
+        background: linear-gradient(180deg, rgba(79, 114, 255, 0.24), rgba(11, 23, 48, 0.96));
+        color: white;
+        font-size: 2.4rem;
+        font-weight: 700;
+        align-items: center;
+        justify-content: center;
       }
 
       .profile-card p {
@@ -318,7 +333,8 @@
 
           <div class="hero-image">
             <div class="profile-card">
-              <img class="profile-avatar" src="profile.jpg" alt="Abhijith B profile picture" />
+              <img class="profile-avatar" src="profile.jpg" alt="Abhijith B profile picture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+              <div class="profile-avatar-placeholder" aria-hidden="true">AB</div>
               <h3>Who I am</h3>
               <p>
                 I’m Abhijith, an undergraduate AI-CS student with a passion for building intelligent web apps and
